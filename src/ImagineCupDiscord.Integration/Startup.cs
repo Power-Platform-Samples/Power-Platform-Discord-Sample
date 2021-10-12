@@ -38,6 +38,7 @@ namespace ImagineCupDiscord.Integration
 
             // Domain Services
             builder.Services.AddScoped<VerificationService>();
+            builder.Services.AddSingleton<ImagineCupDiscordServerService>();
         }
     }
 }

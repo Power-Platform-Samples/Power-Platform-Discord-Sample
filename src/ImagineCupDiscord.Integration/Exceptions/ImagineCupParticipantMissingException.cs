@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ImagineCupDiscord.Integration.Exceptions
 {
-    public class ImagineCupParticipantMissing : Exception
+    public class ImagineCupParticipantMissingException : Exception
     {
         /// <inheritdoc />
         public override string Message => "Participant not found";

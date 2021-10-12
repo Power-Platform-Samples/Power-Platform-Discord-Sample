@@ -63,7 +63,7 @@ namespace ImagineCupDiscord.Tests
                 new OptionsWrapper<DiscordOptions>(discordOptions));
             
             // Act & Assert
-            await Assert.ThrowsAsync<ImagineCupParticipantMissing>(() => 
+            await Assert.ThrowsAsync<ImagineCupParticipantMissingException>(() => 
                 serverService.ApproveParticipantAsync(userId));
         }
     }

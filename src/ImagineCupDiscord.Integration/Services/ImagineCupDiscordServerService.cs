@@ -23,7 +23,7 @@ namespace ImagineCupDiscord.Integration.Services
             var guild = await _discordClient.GetGuildAsync(_options.DiscordServerId);
             var user = await guild.GetUserAsync(userId);
             if (user is null)
-                throw new ImagineCupParticipantMissing();
+                throw new ImagineCupParticipantMissingException();
 
             await user.AddRoleAsync(_options.RegisteredParticipantRoleId);
         }
