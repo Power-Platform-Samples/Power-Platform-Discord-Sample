@@ -1,5 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Discord;
+using ImagineCupDiscord.Integration.Exceptions;
 using ImagineCupDiscord.Integration.Options;
 using Microsoft.Extensions.Options;
 
@@ -20,6 +22,9 @@ namespace ImagineCupDiscord.Integration.Services
         {
             var guild = await _discordClient.GetGuildAsync(_options.DiscordServerId);
             var user = await guild.GetUserAsync(userId);
+            if (user is null)
+                throw new ImagineCupParticipantMissing();
+
             await user.AddRoleAsync(_options.RegisteredParticipantRoleId);
         }
     }
