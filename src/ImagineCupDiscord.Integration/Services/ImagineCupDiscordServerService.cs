@@ -18,6 +18,10 @@ namespace ImagineCupDiscord.Integration.Services
             _options = options.Value;
         }
 
+        /// <summary>
+        /// Approves a participant based on their Discord user ID by applying the registered participant's role to the user.
+        /// </summary>
+        /// <param name="userId">The Discord user ID of the registered participant</param>
         public async Task ApproveParticipantAsync(ulong userId)
         {
             var guild = await _discordClient.GetGuildAsync(_options.DiscordServerId);

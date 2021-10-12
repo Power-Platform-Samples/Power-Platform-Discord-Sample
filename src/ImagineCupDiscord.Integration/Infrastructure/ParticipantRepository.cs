@@ -16,6 +16,7 @@ namespace ImagineCupDiscord.Integration.Infrastructure
             _dbContext = dbContext;
         }
 
+        /// <inheritdoc />
         public Task<Participant> FindAsync(string emailAddress) =>
             _dbContext.Participants.FirstOrDefaultAsync(x => x.EmailAddress == emailAddress);
     }

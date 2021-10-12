@@ -16,6 +16,11 @@ namespace ImagineCupDiscord.Integration.Services
             _participantRepository = participantRepository;
         }
 
+        /// <summary>
+        /// Checks whether the user is registered for Imagine Cup based on their provided <paramref name="emailAddress"/>.
+        /// </summary>
+        /// <param name="emailAddress">The email address used to register for IC.</param>
+        /// <returns>Whether the user is registered for IC.</returns>
         public async Task<bool> IsRegisteredAsync(string emailAddress)
         {
             var participant = await _participantRepository.FindAsync(emailAddress);
