@@ -1,5 +1,5 @@
 # Power Platform Discord Sample
-[![Build using .NET Core](https://github.com/discord-net/Discord.Net/actions/workflows/build.yml/badge.svg)](https://github.com/discord-net/Discord.Net/actions/workflows/build.yml)
+[![Build and Deploy to Function App](https://github.com/Power-Platform-Samples/Power-Platform-Discord-Sample/actions/workflows/ic-discord.yml/badge.svg)](https://github.com/Power-Platform-Samples/Power-Platform-Discord-Sample/actions/workflows/ic-discord.yml)
 
 This sample showcases how **Azure Functions** can be used in conjunction with **Power Virtual Agents** (PVA) and **Power Automate Flows** (PA).
 
