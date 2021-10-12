@@ -1,0 +1,39 @@
+name: Build and deploy .NET Core application to Function App ic-discord
+on:
+  push:
+    branches:
+    - main
+env:
+  AZURE_FUNCTIONAPP_NAME: ic-discord
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: ImagineCupDiscord.Integration\published
+  CONFIGURATION: Release
+  DOTNET_CORE_VERSION: 3.1.x
+  WORKING_DIRECTORY: ImagineCupDiscord.Integration
+  DOTNET_CORE_VERSION_INPROC: ''
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
+    - name: Setup .NET Core (for inproc extensions)
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ env.DOTNET_CORE_VERSION_INPROC }}
+    - name: Restore
+      run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
+    - name: Test
+      run: dotnet test
+    - name: Build
+      run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
+    - name: Publish
+      run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}"
+    - name: Deploy to Azure Function App
+      uses: Azure/functions-action@v1
+      with:
+        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
+        publish-profile: ${{ secrets.IC_DISCORD_FFFF }}
+        package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
