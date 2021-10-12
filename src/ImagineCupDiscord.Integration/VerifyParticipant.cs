@@ -1,7 +1,9 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using System.Web.Http;
 using ImagineCupDiscord.Integration.Infrastructure;
+using ImagineCupDiscord.Integration.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
@@ -13,26 +15,30 @@ namespace ImagineCupDiscord.Integration
 {
     public class VerifyParticipant
     {
-        public VerifyParticipant()
+        private readonly VerificationService _verificationService;
+
+        public VerifyParticipant(VerificationService verificationService)
         {
-            
+            _verificationService = verificationService;
         }
 
         [FunctionName(nameof(VerifyParticipant))]
         public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req)
         {
-            string name = req.Query["name"];
+            if (!req.HasFormContentType)
+                return new BadRequestErrorMessageResult("Request must be form content type");
 
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-            name = name ?? data?.name;
+            // Get email address
+            var emailAddress = req.Form["emailAddress"];
+            if (string.IsNullOrEmpty(emailAddress))
+                return new BadRequestErrorMessageResult("emailAddress not given in form");
 
-            string responseMessage = string.IsNullOrEmpty(name)
-                ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-                : $"Hello, {name}. This HTTP triggered function executed successfully.";
+            // Verify
+            var isRegistered = await _verificationService.IsRegisteredAsync(emailAddress);
 
-            return new OkObjectResult(responseMessage);
+            // Return
+            return isRegistered ? (IActionResult) new OkResult() : new NotFoundResult();
         }
     }
 }
