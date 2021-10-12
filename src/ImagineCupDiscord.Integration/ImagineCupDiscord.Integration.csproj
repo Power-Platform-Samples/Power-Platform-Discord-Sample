@@ -2,9 +2,20 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AzureFunctionsVersion>v3</AzureFunctionsVersion>
+    <UserSecretsId>49076638-a439-4bbe-a40b-19491c970e38</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.20" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Cosmos" Version="3.1.20" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.20" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.20" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="3.1.13" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.20" />
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.13" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ImagineCupDiscord.Models\ImagineCupDiscord.Models.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">

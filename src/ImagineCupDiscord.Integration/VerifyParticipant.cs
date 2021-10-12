@@ -10,10 +10,10 @@ using Newtonsoft.Json;
 
 namespace ImagineCupDiscord.Integration
 {
-    public static class VerifyParticipant
+    public class VerifyParticipant
     {
         [FunctionName(nameof(VerifyParticipant))]
-        public static async Task<IActionResult> Run(
+        public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
             ILogger log)
         {
