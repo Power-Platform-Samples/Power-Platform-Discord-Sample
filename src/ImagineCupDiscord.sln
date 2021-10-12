@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImagineCupDiscord.Integrati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImagineCupDiscord.Models", "ImagineCupDiscord.Models\ImagineCupDiscord.Models.csproj", "{5CD38B7E-21D9-4074-98CF-48C07B6EE922}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImagineCupDiscord.Tests", "ImagineCupDiscord.Tests\ImagineCupDiscord.Tests.csproj", "{F934FEE9-CF37-424D-A901-06A349D83FF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5CD38B7E-21D9-4074-98CF-48C07B6EE922}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CD38B7E-21D9-4074-98CF-48C07B6EE922}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CD38B7E-21D9-4074-98CF-48C07B6EE922}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F934FEE9-CF37-424D-A901-06A349D83FF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F934FEE9-CF37-424D-A901-06A349D83FF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F934FEE9-CF37-424D-A901-06A349D83FF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F934FEE9-CF37-424D-A901-06A349D83FF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

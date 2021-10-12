@@ -6,6 +6,11 @@ namespace ImagineCupDiscord.Models
     {
         public Participant Participant { get; set; }
 
+        /// <summary>
+        /// The participant's Discord User ID.
+        /// </summary>
+        public ulong DiscordUserId { get; set; }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
