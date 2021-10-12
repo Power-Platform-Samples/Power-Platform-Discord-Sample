@@ -13,16 +13,19 @@ using Newtonsoft.Json;
 
 namespace ImagineCupDiscord.Integration
 {
-    public class VerifyParticipant
+    /// <summary>
+    /// This Function checks whether the participant has signed up for the Imagine Cup using their email address.
+    /// </summary>
+    public class ValidateParticipant
     {
         private readonly VerificationService _verificationService;
 
-        public VerifyParticipant(VerificationService verificationService)
+        public ValidateParticipant(VerificationService verificationService)
         {
             _verificationService = verificationService;
         }
 
-        [FunctionName(nameof(VerifyParticipant))]
+        [FunctionName(nameof(ValidateParticipant))]
         public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req)
         {

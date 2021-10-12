@@ -5,6 +5,7 @@
     <UserSecretsId>49076638-a439-4bbe-a40b-19491c970e38</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Discord.Net.Rest" Version="2.4.0" />
     <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.20" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Cosmos" Version="3.1.20" />
