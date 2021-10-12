@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ImagineCupDiscord.Integration\ImagineCupDiscord.Integration.csproj" />
+    <ProjectReference Include="..\..\src\ImagineCupDiscord.Integration\ImagineCupDiscord.Integration.csproj" />
   </ItemGroup>
 
 </Project>
