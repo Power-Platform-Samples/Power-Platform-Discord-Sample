@@ -15,6 +15,7 @@ jobs:
     name: Build and Deploy ARM
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - name: Azure Login
       uses: Azure/login@v1
       with:
