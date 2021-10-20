@@ -28,10 +28,6 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2021-02-01' = {
   }
 }
 
-resource azureFunctionKey 'Microsoft.Web/sites/functions/keys@2021-02-01' = {
-  name: azureFunction.name
-}
-
 resource azureFunction 'Microsoft.Web/sites@2021-02-01' = {
   name: 'ic-discord'
   location: location
@@ -104,5 +100,3 @@ resource sqlServerDatabase 'Microsoft.Sql/servers/databases@2021-02-01-preview' 
     tier: 'Standard'
   }
 }
-
-output functionsHostKey string = azureFunctionKey.value
