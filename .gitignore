@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+src/ImagineCupDiscord.Integration/Properties/serviceDependencies.ic-discord - Zip Deploy.json
+src/ImagineCupDiscord.Integration/Properties/ServiceDependencies/ic-discord - Zip Deploy/storage1.arm.json
