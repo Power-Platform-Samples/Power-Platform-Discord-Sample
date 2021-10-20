@@ -12,8 +12,8 @@ env:
   WORKING_DIRECTORY: src/ImagineCupDiscord.Integration
   DOTNET_CORE_VERSION_INPROC: ''
 jobs:
-  build-and-deploy-arm:
-    name: Build and Deploy ARM
+  deploy-arm:
+    name: Deploy ARM
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -29,9 +29,9 @@ jobs:
         template: deployment/integration.bicep
         parameters: ${{ secrets.AZURE_PARAMETERS }}
   build-and-deploy-functions:
-    name: Build and Deploy Functions
+    name: Build and Deploy Azure Functions
     runs-on: windows-latest
-    needs: build-and-deploy-arm
+    needs: deploy-arm
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET Core

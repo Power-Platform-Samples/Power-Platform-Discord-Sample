@@ -2,6 +2,11 @@
 param dbPassword string
 param dbName string = 'icadmin'
 
+@secure()
+param discordBotToken string
+param discordServerId string
+param discordParticipantRoleId string
+
 var location = resourceGroup().location
 
 
@@ -48,6 +53,25 @@ resource azureFunction 'Microsoft.Web/sites@2021-02-01' = {
         {
           name: 'FUNCTIONS_WORKER_RUNTIME'
           value: 'dotnet'
+        }
+        {
+          name: 'Discord:BotToken'
+          value: discordBotToken
+        }
+        {
+          name: 'Discord:DiscordServerId'
+          value: discordServerId
+        }
+        {
+          name: 'Discord:RegisteredParticipantRoleId'
+          value: discordParticipantRoleId
+        }
+      ]
+      connectionStrings: [
+        {
+          name: 'DefaultSqlConnection'
+          connectionString: 'Server=tcp:${sqlServer.name}${environment().suffixes.sqlServerHostname},1433;Initial Catalog=Integration;Persist Security Info=False;User ID=${dbName};Password=${dbPassword};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
+          type: 'SQLAzure'
         }
       ]
     }
