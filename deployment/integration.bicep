@@ -3,9 +3,6 @@ param dbPassword string
 param dbName string = 'icadmin'
 
 @secure()
-param hostkey string = newGuid()
-
-@secure()
 param discordBotToken string
 param discordServerId string
 param discordParticipantRoleId string
@@ -33,7 +30,6 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2021-02-01' = {
 
 resource azureFunctionKey 'Microsoft.Web/sites/functions/keys@2021-02-01' = {
   name: azureFunction.name
-  value: hostkey
 }
 
 resource azureFunction 'Microsoft.Web/sites@2021-02-01' = {
@@ -109,4 +105,4 @@ resource sqlServerDatabase 'Microsoft.Sql/servers/databases@2021-02-01-preview' 
   }
 }
 
-output functionsHostKey string = hostkey
+output functionsHostKey string = azureFunctionKey.value
