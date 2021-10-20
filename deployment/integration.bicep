@@ -11,7 +11,6 @@ param discordServerId string
 param discordParticipantRoleId string
 
 var location = resourceGroup().location
-var rgName = resourceGroup().name
 
 
 resource storage 'Microsoft.Storage/storageAccounts@2021-06-01' = {
