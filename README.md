@@ -23,6 +23,7 @@ The project makes use of Test-Driven Development using Live Unit Test. If you de
 - `Discord:BotToken`: Discord bot token obtained from Discord Developer Portal
 - `Discord:DiscordServerId`: The server ID (in this case Imagine Cup)
 - `Discord:RegisteredParticipantRoleId`: The role ID that grants broader access to the user
+- `ConnectionStrings:DefaultSqlConnection` or `DefaultSqlConnection`: Connection string for the SQL database.
  
 ## Deployment
 This sample contains an Azure Bicep deployment file that instructs what resources are required on Azure. In a nutshell, this project requires an Azure Functions resource plus its dependencies and a SQL database.
@@ -30,4 +31,5 @@ This sample contains an Azure Bicep deployment file that instructs what resource
 ## References
 - [What is Azure Functions? | Microsoft Docs](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview)
 - [Quickstart: Create a C# function in Azure using Visual Studio Code | Microsoft Docs](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp?tabs=in-process)
-- [Deploy Azure resources by using Bicep and GitHub Actions](https://docs.microsoft.com/en-us/learn/paths/bicep-github-actions/)
+- [Deploy Azure resources by using Bicep and GitHub Actions | Microsoft Docs](https://docs.microsoft.com/en-us/learn/paths/bicep-github-actions/)
+- [Entity Framework | Microsoft Docs](https://docs.microsoft.com/en-us/ef/)
