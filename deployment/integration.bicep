@@ -2,6 +2,11 @@
 param dbPassword string
 param dbName string = 'icadmin'
 
+@secure()
+param discordBotToken string
+param discordServerId string
+param discordParticipantRoleId string
+
 var location = resourceGroup().location
 
 
@@ -16,7 +21,7 @@ resource storage 'Microsoft.Storage/storageAccounts@2021-06-01' = {
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2021-02-01' = {
   name: 'ic-discord-plan'
-  location: resourceGroup().location
+  location: location
   sku: {
     tier: 'Free'
     name: 'F1'
@@ -48,6 +53,25 @@ resource azureFunction 'Microsoft.Web/sites@2021-02-01' = {
         {
           name: 'FUNCTIONS_WORKER_RUNTIME'
           value: 'dotnet'
+        }
+        {
+          name: 'Discord:BotToken'
+          value: discordBotToken
+        }
+        {
+          name: 'Discord:DiscordServerId'
+          value: discordServerId
+        }
+        {
+          name: 'Discord:RegisteredParticipantRoleId'
+          value: discordParticipantRoleId
+        }
+      ]
+      connectionStrings: [
+        {
+          name: 'DefaultSqlConnection'
+          connectionString: 'Server=tcp:${sqlServer.name}${environment().suffixes.sqlServerHostname},1433;Initial Catalog=Integration;Persist Security Info=False;User ID=${dbName};Password=${dbPassword};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
+          type: 'SQLAzure'
         }
       ]
     }
